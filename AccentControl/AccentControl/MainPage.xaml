@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AccentControl.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Margin="20,20,20,0"
+              ColumnSpacing="5"
+              HorizontalOptions="Center"
+              VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Padding="0"
+                   FontSize="27"
+                   FontFamily="FontAwesomeBold"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="&#xf6c0;"
+                   TextColor="LightBlue"/>
+
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Padding="0"
+                   FontSize="27"
+                   FontFamily="FontAwesomeBold"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="&#xf6c0;"
+                   TextColor="Blue"/>
+            
+            <Label Grid.Row="0"
+                   Grid.Column="2"
+                   Padding="0"
+                   FontSize="27"
+                   FontFamily="FontAwesomeBold"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="&#xf6c0;"
+                   TextColor="LightGreen"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Padding="0"
+                   FontSize="15"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="Locked chair"
+                   TextColor="LightBlue"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Padding="0"
+                   FontSize="15"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="Chair available"
+                   TextColor="Blue"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="2"
+                   Padding="0"
+                   FontSize="15"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="Reserved chair"
+                   TextColor="LightGreen"/>
+
+        </Grid>
+        <CollectionView Grid.Row="1"
+                        x:Name="lChair"
+                        Margin="20,30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        SelectionMode="Single"
+                        ItemsUpdatingScrollMode="KeepItemsInView"
+                        ItemsSource="{Binding Chairs}"
+                        SelectedItem="{Binding ItemSelected}"
+                        SelectionChangedCommandParameter="{Binding ItemSelected}"
+                        SelectionChangedCommand="{Binding SelectedCommand, Mode=TwoWay}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" 
+                             Span="5" 
+                             HorizontalItemSpacing="0"
+                             VerticalItemSpacing="0"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Spacing="0">
+                        <Frame
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="White">
+                            <Grid RowSpacing="0" 
+                              ColumnSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0"
+                                       Padding="0"
+                                       FontSize="27"
+                                       FontFamily="FontAwesomeBold"
+                                       VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       Text="{Binding ImageIcon}"
+                                       TextColor="{Binding ColorChair}"/>
+
+                                <Label Grid.Row="1"
+                                       FontSize="Medium"
+                                       Margin="0,0,0,20"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       Text="{Binding Name}"
+                                       TextColor="{Binding ColorNumber}" />
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+       
+</ContentPage>
